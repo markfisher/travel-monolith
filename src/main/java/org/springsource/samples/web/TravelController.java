@@ -8,25 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springsource.samples.data.BookingRepository;
 import org.springsource.samples.model.Booking;
+import org.springsource.samples.service.TravelService;
 
 @Controller
 public class TravelController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TravelController.class);
 
-	private final BookingRepository repository;
+	private final TravelService travelService;
 
 	@Autowired
-	public TravelController(BookingRepository repository) {
-		this.repository = repository;
+	public TravelController(TravelService travelService) {
+		this.travelService = travelService;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.info("home");
-		model.addAttribute("bookings", repository.findBookings("todo:username"));
+		model.addAttribute("bookings", travelService.getBookingsForUser("todo:username"));
 		return "home";
 	}
 
@@ -46,7 +46,7 @@ public class TravelController {
 		booking.setFlight(flight);
 		booking.setHotel(hotel);
 		booking.setCar(car);
-		repository.addBooking(booking);
+		travelService.addBooking(booking);
 		return "redirect:/";
 	}
 
