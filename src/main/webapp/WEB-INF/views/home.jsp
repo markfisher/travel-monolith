@@ -5,20 +5,23 @@
 	<title>Travel Demo: Home</title>
 </head>
 <body>
-<h1>
-	Hello Joe  
-</h1>
 
-<P>Here are your bookings:</P>
-
+<h3>Current Bookings:</h3>
 <ul>
   <c:forEach var="booking" items="${bookings}">
-    <li>${booking}</li>
+    <li>
+      <b>Booking ID ${booking.id}: from ${booking.startDate} to ${booking.endDate}</b>
+      <ul>
+        <li>flight: ${booking.flight}</li>
+        <li>hotel: ${booking.hotel}</li>
+        <li>car: ${booking.car}</li>
+      </ul>
+    </li>
   </c:forEach>
 </ul>
 
 <hr/>
-<p>Book another trip:</p>
+<p>Book Another Trip:</p>
 <form action="search" method="post">
 	Zip: <input type="text" name="zip"/>
 	<br/>

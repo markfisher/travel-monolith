@@ -13,16 +13,18 @@
 
 <form action="book" method="post">
 	<select name="flight">
-		<option value="1">Option 1</option>
-		<option value="2">Option 2</option>
+		<option>First Class Airlines</option>
+		<option>Cramped Cabin Air</option>
 	</select>
 	<select name="hotel">
-		<option value="3">Option 3</option>
-		<option value="4">Option 4</option>
+		<option>Cheap Inn</option>
+		<option>Luxury Suites</option>
+		<option>Roach Motel</option>
 	</select>
 	<select name="car">
-		<option value="5">Option 5</option>
-		<option value="6">Option 6</option>
+		<option>Compact</option>
+		<option>Convertible</option>
+		<option>SUV</option>
 	</select>
 	<input type="submit" value="Book"/>
 </form>
