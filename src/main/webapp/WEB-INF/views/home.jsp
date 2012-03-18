@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<h3>Current Bookings:</h3>
+<h3>Current Itineraries:</h3>
 <ul>
-  <c:forEach var="booking" items="${bookings}">
+  <c:forEach var="itinerary" items="${itineraries}">
     <li>
-      <b>Booking ID ${booking.id}: from ${booking.startDate} to ${booking.endDate}</b>
+      <b>Itinerary ID ${itinerary.id}: from ${itinerary.startDate} to ${itinerary.endDate}</b>
       <ul>
-        <li>flight: ${booking.flight}</li>
-        <li>hotel: ${booking.hotel}</li>
-        <li>car: ${booking.car}</li>
+        <li>flight: ${itinerary.flightReservation}</li>
+        <li>hotel: ${itinerary.hotelReservation}</li>
+        <li>car: ${itinerary.carReservation}</li>
       </ul>
     </li>
   </c:forEach>

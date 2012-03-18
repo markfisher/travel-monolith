@@ -12,19 +12,40 @@
 <P>Choose from these:</P>
 
 <form action="book" method="post">
-	<select name="flight">
-		<option>First Class Airlines</option>
-		<option>Cramped Cabin Air</option>
+	Flight:
+	<select name="flightNumber">
+		<option value="FC123">First Class Airlines: 123</option>
+		<option value="CC456">Cramped Cabin Air: 456</option>
 	</select>
-	<select name="hotel">
+	Seat:
+	<select name="seatNumber">
+		<option>1A</option>
+		<option>37E</option>
+	</select>
+	<br/>
+	Hotel:
+	<select name="hotelName">
 		<option>Cheap Inn</option>
 		<option>Luxury Suites</option>
 		<option>Roach Motel</option>
 	</select>
-	<select name="car">
-		<option>Compact</option>
-		<option>Convertible</option>
-		<option>SUV</option>
+	Room:
+	<select name="roomNumber">
+		<option>103</option>
+		<option>1207</option>
+	</select>
+	<br/>
+	Car Size:
+	<select name="carSize">
+		<option>economy</option>
+		<option>compact</option>
+		<option>intermediate</option>
+		<option>luxury</option>
+	</select>
+	Rental Agency:
+	<select name="rentalAgency">
+		<option>Lemons R'Us</option>
+		<option>Quality Cars</option>
 	</select>
 	<input type="submit" value="Book"/>
 </form>

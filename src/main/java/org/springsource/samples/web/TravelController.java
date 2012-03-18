@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springsource.samples.model.Booking;
+import org.springsource.samples.model.CarReservation;
+import org.springsource.samples.model.FlightReservation;
+import org.springsource.samples.model.HotelReservation;
+import org.springsource.samples.model.Itinerary;
 import org.springsource.samples.service.TravelService;
 
 @Controller
@@ -26,7 +29,7 @@ public class TravelController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		logger.info("home");
-		model.addAttribute("bookings", travelService.getBookingsForUser("todo:username"));
+		model.addAttribute("itineraries", travelService.getItinerariesForUser("joe"));
 		return "home";
 	}
 
@@ -37,16 +40,31 @@ public class TravelController {
 	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
-	public String book(@RequestParam String flight, @RequestParam String hotel, @RequestParam String car, Model model) {
-		logger.info("booking: flight=" + flight + ", hotel=" + hotel + ", car=" + car);
-		Booking booking = new Booking();
-		booking.setUsername("todo:username");
-		booking.setStartDate("to/do/01");
-		booking.setEndDate("to/do/02");
-		booking.setFlight(flight);
-		booking.setHotel(hotel);
-		booking.setCar(car);
-		travelService.addBooking(booking);
+	public String book(@RequestParam String flightNumber,
+			@RequestParam String seatNumber,
+			@RequestParam String hotelName,
+			@RequestParam String roomNumber,
+			@RequestParam String carSize,
+			@RequestParam String rentalAgency,
+			Model model) {
+		logger.info("booking: flight=" + flightNumber + ", hotel=" + hotelName + ", car=" + rentalAgency);
+		Itinerary itinerary = new Itinerary();
+		itinerary.setUsername("joe");
+		itinerary.setStartDate("to/do/01");
+		itinerary.setEndDate("to/do/02");
+		FlightReservation flightReservation = new FlightReservation();
+		flightReservation.setFlightNumber(flightNumber);
+		flightReservation.setSeatNumber(seatNumber);
+		itinerary.setFlightReservation(flightReservation);
+		HotelReservation hotelReservation = new HotelReservation();
+		hotelReservation.setHotelName(hotelName);
+		hotelReservation.setRoomNumber(roomNumber);
+		itinerary.setHotelReservation(hotelReservation);
+		CarReservation carReservation = new CarReservation();
+		carReservation.setCarSize(carSize);
+		carReservation.setRentalAgency(rentalAgency);
+		itinerary.setCarReservation(carReservation);
+		travelService.addItinerary(itinerary);
 		return "redirect:/";
 	}
 
