@@ -34,13 +34,19 @@ public class TravelController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String search(@RequestParam String zip, @RequestParam String start, @RequestParam String end, Model model) {
-		logger.info("searching: zip=" + zip + ", start=" + start + ", end=" + end);
+	public String search(@RequestParam String zip, @RequestParam String startDate, @RequestParam String endDate, Model model) {
+		logger.info("searching: zip=" + zip + ", start=" + startDate + ", end=" + endDate);
+		model.addAttribute("zip", zip);
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
 		return "search";
 	}
 
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
-	public String book(@RequestParam String flightNumber,
+	public String book(@RequestParam String username,
+			@RequestParam String startDate,
+			@RequestParam String endDate,
+			@RequestParam String flightNumber,
 			@RequestParam String seatNumber,
 			@RequestParam String hotelName,
 			@RequestParam String roomNumber,
@@ -49,9 +55,9 @@ public class TravelController {
 			Model model) {
 		logger.info("booking: flight=" + flightNumber + ", hotel=" + hotelName + ", car=" + rentalAgency);
 		Itinerary itinerary = new Itinerary();
-		itinerary.setUsername("joe");
-		itinerary.setStartDate("to/do/01");
-		itinerary.setEndDate("to/do/02");
+		itinerary.setUsername(username);
+		itinerary.setStartDate(startDate);
+		itinerary.setEndDate(endDate);
 		FlightReservation flightReservation = new FlightReservation();
 		flightReservation.setFlightNumber(flightNumber);
 		flightReservation.setSeatNumber(seatNumber);

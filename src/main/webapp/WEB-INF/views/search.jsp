@@ -12,6 +12,10 @@
 <P>Choose from these:</P>
 
 <form action="book" method="post">
+	<input type="hidden" name="username" value="joe"/>
+	<input type="hidden" name="zip" value="${zip}"/>
+	<input type="hidden" name="startDate" value="${startDate}"/>
+	<input type="hidden" name="endDate" value="${endDate}"/>
 	Flight:
 	<select name="flightNumber">
 		<option value="FC123">First Class Airlines: 123</option>

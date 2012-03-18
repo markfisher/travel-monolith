@@ -25,9 +25,9 @@
 <form action="search" method="post">
 	Zip: <input type="text" name="zip"/>
 	<br/>
-	Start: <input type="text" name="start"/>
+	Start: <input type="text" name="startDate"/>
 	<br/>
-	End: <input type="text" name="end"/>
+	End: <input type="text" name="endDate"/>
 	<br/>
 	<input type="submit" value="Search"/>
 </form>
